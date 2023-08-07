@@ -105,6 +105,7 @@ var uppercase = [
 
 // Write password to the #password input
 function generatePassword() {
+ 
   var password = "";
   var passwordChar = "";
   var passwordLengthUser = prompt("How many characters would you like your password to be? Must be between 8 and 128 characters.");
@@ -112,10 +113,12 @@ function generatePassword() {
 
   if (passwordLengthUser < 8) {
       alert("Password must have more than 7 characters!")
+      return "";
   }
 
   if (passwordLengthUser > 128) {
       alert("Password must have less than 129 characters!")
+      return "";
   }
 
   var lowercaseCharChoice = confirm("Would you like to add lowercase characters to the password?");
@@ -146,17 +149,14 @@ function generatePassword() {
       password = passwordChar[Math.floor(Math.random() * passwordChar.length)]
   }
 
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
 
 function writePassword() {
   var password = generatePassword();
   var pwTextArea = document.getElementById("password");
   pwTextArea.value = password;
 }
-
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 }
 
-generateBtn.addEventListener("click", writePassword);
+
