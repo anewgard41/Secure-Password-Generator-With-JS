@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// assigning character sets to variables. Strings to be specific. 
+// Assigning character sets to variables. Strings to be specific. 
 var specialchar = "!@#$%^&*()_+`-=[]{}|<.>?/;,"
 var numbers = "0123456789"
 var lowercase = "abcdefghijklmnopqrstuvwxyz"
@@ -33,9 +33,9 @@ function generatePassword() {
         return "";
     };
 
-    // window.confirm used to get true or false answer from user for each of the four character sets. 
-
+    // .confirm used to get true or false answer from user for each of the four character sets. 
     // CharChoice variables used for if statements. 
+    
     var lowercaseCharChoice = confirm("Would you like to add lowercase characters to the password?");
 
     if (lowercaseCharChoice) {
@@ -60,23 +60,19 @@ function generatePassword() {
         passwordChar += numbers;
     };
 
-
     // Used the function charAt so it would return a specific character at the random index from a string.
     for (var i = 0; i < passwordLengthUser; i++) {
         password += passwordChar.charAt(Math.floor(Math.random() * passwordChar.length))
     };
-
     return password
 }
 
 function writePassword() {
     var password = generatePassword();
-
     // querySelector grabs location in DOM where the password will be input. 
     var pwTextArea = document.querySelector("#password");
     pwTextArea.value = password;
-
 }
-// Add event listener to generate button
 
+// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
